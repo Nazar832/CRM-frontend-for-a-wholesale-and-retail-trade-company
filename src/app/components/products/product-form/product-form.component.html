@@ -1,0 +1,19 @@
+<h1>Create a new product</h1>
+
+<form action="/products" method="post">
+  <label for="name">Name</label>
+  <input name="name" id="name" [(ngModel)]="name" required minlength="2" placeholder="Product name">
+
+  <label for="wholesalePrice">Wholesale price</label>
+  <input type="number" name="wholesalePrice" id="wholesalePrice" [(ngModel)]="wholesalePrice" required min="0.01">
+
+  <label for="retailPrice">Retail price</label>
+  <input type="number" name="retailPrice" id="retailPrice" [(ngModel)]="retailPrice" required min="0.01">
+
+  <label for="description">Description</label>
+  <textarea name="description" id="description" [(ngModel)]="description" required minlength="2" placeholder="Product description..."></textarea>
+
+  <button type="submit" (click)="isChangeForm ? change() : createProduct()">{{ isChangeForm ? 'Save' : 'Create' }}</button>
+  <button type="reset">Reset</button>
+  <button type="button" (click)="isChangeForm ? cancelUpdating() : cancelCreation()">Cancel</button>
+</form>

@@ -1,0 +1,5 @@
+<button (click)="navigateToCreateProduct()">Create</button>
+
+<app-table [columns]="['name', 'wholesalePrice', 'retailPrice']" [data]="products"
+  [isDealsTable]="false" [rowClickHandler]="navigateToProduct">
+</app-table>

@@ -1,0 +1,5 @@
+<button (click)="navigateToCreateBuyer()">Create</button>
+
+<app-table [columns]="['name', 'phoneNumber', 'contactPerson', 'address']" [data]="buyers"
+  [isDealsTable]="false" [rowClickHandler]="navigateToBuyer">
+</app-table>

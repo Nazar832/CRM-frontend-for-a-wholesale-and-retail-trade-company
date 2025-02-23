@@ -1,0 +1,9 @@
+<h1>{{ product?.name }}</h1>
+
+<p>Wholesale price: {{ product?.wholesalePrice }}</p>
+<p>Retail price: {{ product?.retailPrice }}</p>
+<p>Description:</p>
+<p>{{ product?.description }}</p>
+
+<button (click)="deleteProduct()">Delete</button>
+<button (click)="navigateOnChange(product?._id)">Edit</button>

@@ -1,0 +1,15 @@
+<mat-tab-group (selectedIndexChange)="changeFilter($event)">
+  <mat-tab label="All Deals"></mat-tab>
+  <mat-tab label="Wholesale"></mat-tab>
+  <mat-tab label="Retail"></mat-tab>
+  <mat-tab label="Unpaid"></mat-tab>
+  <mat-tab label="Paid"></mat-tab>
+  <mat-tab label="Cancelled"></mat-tab>
+</mat-tab-group>
+
+<button (click)="navigateToCreateDeal()">Create</button>
+
+<app-table [columns]="['buyerName', 'products', 'wholesale', 'totalPrice', 'contactPersonPhone', 'status']" [data]="filteredDeals"
+  [isDealsTable]="true" [rowClickHandler]="navigateToDeal">
+</app-table>
+

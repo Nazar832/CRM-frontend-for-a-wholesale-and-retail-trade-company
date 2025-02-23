@@ -1,0 +1,39 @@
+<form [formGroup]="productForm" (ngSubmit)="submitForm()">
+
+  <mat-form-field>
+    <label for="buyer">Buyer Name:</label>
+    <input id="buyer" name="buyer" matInput [matAutocomplete]="auto" [formControl]="buyerCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let buyer of filteredBuyers | async" [value]="buyer.name">
+        <span>{{ buyer.name }}</span> |
+        <small>Phone number: {{buyer.phoneNumber}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <label for="status">Status:</label>
+  <select id="status" formControlName="status">
+    <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+  </select>
+
+  <div formArrayName="products">
+    <div *ngFor="let product of products.controls; let i = index" [formGroupName]="i" class="product-row">
+      <label>Product Name:</label>
+      <input type="text" formControlName="product" placeholder="Product Name">
+
+      <label>Quantity:</label>
+      <input type="number" formControlName="amount" placeholder="Quantity" min="1">
+
+      <button type="button" (click)="removeProduct(i)" *ngIf="products.length > 1">Remove product</button>
+    </div>
+  </div>
+
+  <button type="button" (click)="addProduct()">Add product</button>
+
+  <button type="submit">{{ isChangeForm ? 'Save' : 'Create' }}</button>
+  <button type="reset" (click)="reset()">Reset</button>
+  <button type="button" (click)="cancel()">Cancel</button>
+</form>
+
+<p>Total price: {{ totalPrice }}$</p>
+

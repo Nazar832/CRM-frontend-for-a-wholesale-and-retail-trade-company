@@ -1,0 +1,18 @@
+<p>Products:</p>
+<ul *ngFor="let product of deal?.products">
+  <li>{{ product.product }} ({{ product.amount }} pcs)</li>
+</ul>
+<p>Total price: {{ deal?.totalPrice }}$</p>
+<p>Buyer:</p>
+
+<app-table [columns]="['name', 'phoneNumber', 'contactPerson', 'address']" [data]="[deal!.buyer]"
+  [isDealsTable]="false" [rowClickHandler]="navigateToBuyer">
+</app-table>
+
+<p>Wholesale: {{ deal?.wholesale }}</p>
+<p>Status: {{ deal?.status }}</p>
+<p>Created at: {{ deal?.createdAt | date:'medium' }}</p>
+<p>Updated at: {{ deal?.updatedAt | date:'medium' }}</p>
+
+<button (click)="downloadInvoice()">Invoice</button>
+<button (click)="navigateOnChange(deal?._id)">Edit</button>

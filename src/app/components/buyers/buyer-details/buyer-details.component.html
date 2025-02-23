@@ -1,0 +1,14 @@
+<h1>{{ buyer?.name }}</h1>
+
+<p>Phone number: {{ buyer?.phoneNumber }}</p>
+<p>Contact person: {{ buyer?.contactPerson }}</p>
+<p>Address: {{ buyer?.address }}</p>
+<p>Deals: {{ buyer?.deals_!.length > 0 ? '' : 'no deals.'}}</p>
+
+<app-table *ngIf="buyer?.deals_!.length > 0" [columns]="['products', 'wholesale', 'totalPrice', 'status']" [data]="buyer?.deals_"
+  [isDealsTable]="true" [rowClickHandler]="navigateToDeal">
+</app-table>
+
+
+<button (click)="deleteBuyer()">Delete</button>
+<button (click)="navigateOnChange(buyer?._id)">Edit</button>
